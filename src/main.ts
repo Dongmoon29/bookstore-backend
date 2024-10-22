@@ -1,9 +1,14 @@
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
+import { readFileSync } from 'fs';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const httpsOptions = {
+    key: readFileSync('./secrets/server.key'), // 키 파일 경로
+    cert: readFileSync('./secrets/server.cert'), // 인증서 파일 경로
+  };
+  const app = await NestFactory.create(AppModule, { httpsOptions });
 
   app.useGlobalPipes(new ValidationPipe());
   app.setGlobalPrefix('api');
@@ -12,6 +17,6 @@ async function bootstrap() {
     origin: '*',
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
   });
-  await app.listen(process.env.PORT ?? 8080);
+  await app.listen(443);
 }
 bootstrap();
