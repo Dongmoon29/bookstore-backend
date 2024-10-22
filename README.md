@@ -1,6 +1,12 @@
-## 프로젝트 실행 설명
+## RGT 기술 과제
 
-## 프로젝트 세팅
+RGT 기술과제 백엔드 프로젝트입니다.
+
+## 구현 설명
+
+https://brainy-begonia-0e6.notion.site/RGT-127bad44aef480ecbba3f74e327704c4
+
+## 프로젝트 실행 설명
 
 ```bash
 $ npm install
@@ -29,5 +35,3 @@ $ npm run start
 ```bash
 $ npm run test
 ```
-
-## 프로젝트 개발 상세
