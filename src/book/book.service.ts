@@ -30,6 +30,7 @@ export class BookService {
 
     qb.skip(offset);
     qb.take(limit);
+    qb.orderBy('books.id', 'DESC');
 
     const books = await qb.getMany();
     return { books, total };
